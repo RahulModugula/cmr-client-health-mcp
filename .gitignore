@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+.eggs/
+
+# uv
+.uv/
+# NOTE: uv.lock is intentionally NOT ignored. Committing the lockfile gives anyone
+# who clones this repo a byte-for-byte reproducible dependency set (deterministic
+# `uv run`). That's the modern uv convention for applications.
+
+# macOS
+.DS_Store
+
+# Personal prep / meta docs — kept local, never published to the public repo.
+INTERVIEW_PREP.md
+BUILD_SPEC.md
+DEMO.md
+STUDY.md
+CHALLENGE.md

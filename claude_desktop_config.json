@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "cmr-client-health": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--with",
+        "fastmcp",
+        "--directory",
+        "/ABSOLUTE/PATH/TO/cmr-client-health-mcp",
+        "fastmcp",
+        "run",
+        "server.py"
+      ]
+    }
+  }
+}

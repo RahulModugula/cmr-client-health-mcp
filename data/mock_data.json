@@ -1,0 +1,402 @@
+{
+  "_meta": {
+    "description": "MOCK reporting data shaped to MIRROR Rustici Content Controller's usage/LearnerHistory report output. NOT a literal copy of a live response.",
+    "accuracy_boundary": "Endpoint NAMES (usage/LearnerHistory, usage/RegistrationHistory, usage/InteractionHistory), the string-ID convention, and the CourseVersion concept are REAL, taken from Rustici Content Controller v4.1 release notes. The exact FIELD SHAPE below is a reasonable approximation, not a verified copy of the live schema. In a production integration these fields would be mapped against the actual automation-API response.",
+    "modeled_after_endpoint": "usage/LearnerHistory",
+    "generated_for": "CMR client-health MCP reference server"
+  },
+  "accounts": [
+    {
+      "account_id": "acct-001",
+      "account_name": "BioPharma Inc.",
+      "delivery_method": "launcher",
+      "contract_renewal_date": "2026-08-15",
+      "courses": [
+        {
+          "course_id": "crs-pharmacovigilance-2026",
+          "title": "Pharmacovigilance Basics",
+          "therapeutic_area": "Compliance",
+          "registrations": 210,
+          "completions": 80,
+          "completion_rate": 38.1,
+          "avg_score": 69.2,
+          "last_content_update": "2026-01-20",
+          "standard": "cmi5"
+        },
+        {
+          "course_id": "crs-gxp-compliance",
+          "title": "Good Clinical Practice (GxP) Compliance",
+          "therapeutic_area": "Compliance",
+          "registrations": 160,
+          "completions": 76,
+          "completion_rate": 47.5,
+          "avg_score": 73.0,
+          "last_content_update": "2024-09-15",
+          "standard": "SCORM 1.2"
+        },
+        {
+          "course_id": "crs-hipaa-2026",
+          "title": "HIPAA Data Security Essentials",
+          "therapeutic_area": "Compliance",
+          "registrations": 240,
+          "completions": 206,
+          "completion_rate": 85.8,
+          "avg_score": 88.5,
+          "last_content_update": "2026-03-01",
+          "standard": "SCORM 1.2"
+        },
+        {
+          "course_id": "crs-cardio-fundamentals",
+          "title": "Cardiovascular Therapeutic Area Fundamentals",
+          "therapeutic_area": "Cardiology",
+          "registrations": 150,
+          "completions": 132,
+          "completion_rate": 88.0,
+          "avg_score": 86.0,
+          "last_content_update": "2025-11-12",
+          "standard": "cmi5"
+        },
+        {
+          "course_id": "crs-market-access",
+          "title": "Market Access & Managed Care",
+          "therapeutic_area": "Market Access",
+          "registrations": 130,
+          "completions": 109,
+          "completion_rate": 83.8,
+          "avg_score": 82.5,
+          "last_content_update": "2025-09-05",
+          "standard": "SCORM 1.2"
+        },
+        {
+          "course_id": "crs-value-based-care",
+          "title": "Value-Based Care Models",
+          "therapeutic_area": "Market Access",
+          "registrations": 110,
+          "completions": 88,
+          "completion_rate": 80.0,
+          "avg_score": 79.0,
+          "last_content_update": "2026-02-22",
+          "standard": "cmi5"
+        },
+        {
+          "course_id": "crs-med-device-reg",
+          "title": "Medical Device Regulatory Compliance",
+          "therapeutic_area": "Compliance",
+          "registrations": 95,
+          "completions": 79,
+          "completion_rate": 83.2,
+          "avg_score": 85.0,
+          "last_content_update": "2025-12-15",
+          "standard": "SCORM 1.2"
+        }
+      ]
+    },
+    {
+      "account_id": "acct-002",
+      "account_name": "Meridian Therapeutics",
+      "delivery_method": "lms_dispatch",
+      "contract_renewal_date": "2026-11-01",
+      "courses": [
+        {
+          "course_id": "crs-onco-sales",
+          "title": "Oncology Sales Strategy",
+          "therapeutic_area": "Oncology",
+          "registrations": 140,
+          "completions": 124,
+          "completion_rate": 88.6,
+          "avg_score": 87.0,
+          "last_content_update": "2026-01-15",
+          "standard": "cmi5"
+        },
+        {
+          "course_id": "crs-cardio-fundamentals",
+          "title": "Cardiovascular Therapeutic Area Fundamentals",
+          "therapeutic_area": "Cardiology",
+          "registrations": 120,
+          "completions": 108,
+          "completion_rate": 90.0,
+          "avg_score": 89.0,
+          "last_content_update": "2026-02-01",
+          "standard": "cmi5"
+        },
+        {
+          "course_id": "crs-hipaa-2026",
+          "title": "HIPAA Data Security Essentials",
+          "therapeutic_area": "Compliance",
+          "registrations": 160,
+          "completions": 142,
+          "completion_rate": 88.8,
+          "avg_score": 86.5,
+          "last_content_update": "2025-12-10",
+          "standard": "SCORM 1.2"
+        },
+        {
+          "course_id": "crs-pharmacovigilance-2026",
+          "title": "Pharmacovigilance Basics",
+          "therapeutic_area": "Compliance",
+          "registrations": 100,
+          "completions": 87,
+          "completion_rate": 87.0,
+          "avg_score": 84.0,
+          "last_content_update": "2026-03-05",
+          "standard": "cmi5"
+        },
+        {
+          "course_id": "crs-market-access",
+          "title": "Market Access & Managed Care",
+          "therapeutic_area": "Market Access",
+          "registrations": 90,
+          "completions": 79,
+          "completion_rate": 87.8,
+          "avg_score": 85.5,
+          "last_content_update": "2025-11-20",
+          "standard": "SCORM 1.2"
+        },
+        {
+          "course_id": "crs-value-based-care",
+          "title": "Value-Based Care Models",
+          "therapeutic_area": "Market Access",
+          "registrations": 80,
+          "completions": 71,
+          "completion_rate": 88.8,
+          "avg_score": 83.0,
+          "last_content_update": "2026-02-18",
+          "standard": "cmi5"
+        }
+      ]
+    },
+    {
+      "account_id": "acct-003",
+      "account_name": "Caldera Devices",
+      "delivery_method": "launcher",
+      "contract_renewal_date": "2026-07-01",
+      "courses": [
+        {
+          "course_id": "crs-med-device-reg",
+          "title": "Medical Device Regulatory Compliance",
+          "therapeutic_area": "Compliance",
+          "registrations": 200,
+          "completions": 92,
+          "completion_rate": 46.0,
+          "avg_score": 70.0,
+          "last_content_update": "2025-08-10",
+          "standard": "SCORM 1.2"
+        },
+        {
+          "course_id": "crs-hipaa-2026",
+          "title": "HIPAA Data Security Essentials",
+          "therapeutic_area": "Compliance",
+          "registrations": 180,
+          "completions": 75,
+          "completion_rate": 41.7,
+          "avg_score": 68.5,
+          "last_content_update": "2025-10-01",
+          "standard": "SCORM 1.2"
+        },
+        {
+          "course_id": "crs-pharmacovigilance-2026",
+          "title": "Pharmacovigilance Basics",
+          "therapeutic_area": "Compliance",
+          "registrations": 150,
+          "completions": 58,
+          "completion_rate": 38.7,
+          "avg_score": 66.0,
+          "last_content_update": "2024-12-05",
+          "standard": "cmi5"
+        },
+        {
+          "course_id": "crs-cardio-fundamentals",
+          "title": "Cardiovascular Therapeutic Area Fundamentals",
+          "therapeutic_area": "Cardiology",
+          "registrations": 120,
+          "completions": 78,
+          "completion_rate": 65.0,
+          "avg_score": 75.0,
+          "last_content_update": "2026-01-10",
+          "standard": "cmi5"
+        },
+        {
+          "course_id": "crs-market-access",
+          "title": "Market Access & Managed Care",
+          "therapeutic_area": "Market Access",
+          "registrations": 100,
+          "completions": 52,
+          "completion_rate": 52.0,
+          "avg_score": 71.0,
+          "last_content_update": "2025-09-15",
+          "standard": "SCORM 1.2"
+        },
+        {
+          "course_id": "crs-value-based-care",
+          "title": "Value-Based Care Models",
+          "therapeutic_area": "Market Access",
+          "registrations": 90,
+          "completions": 49,
+          "completion_rate": 54.4,
+          "avg_score": 69.5,
+          "last_content_update": "2026-02-02",
+          "standard": "cmi5"
+        },
+        {
+          "course_id": "crs-onco-sales",
+          "title": "Oncology Sales Strategy",
+          "therapeutic_area": "Oncology",
+          "registrations": 80,
+          "completions": 62,
+          "completion_rate": 77.5,
+          "avg_score": 80.0,
+          "last_content_update": "2026-03-12",
+          "standard": "cmi5"
+        }
+      ]
+    },
+    {
+      "account_id": "acct-004",
+      "account_name": "Apex Biologics",
+      "delivery_method": "lms_dispatch",
+      "contract_renewal_date": "2027-02-20",
+      "courses": [
+        {
+          "course_id": "crs-onco-sales",
+          "title": "Oncology Sales Strategy",
+          "therapeutic_area": "Oncology",
+          "registrations": 130,
+          "completions": 121,
+          "completion_rate": 93.1,
+          "avg_score": 91.0,
+          "last_content_update": "2026-02-25",
+          "standard": "cmi5"
+        },
+        {
+          "course_id": "crs-cardio-fundamentals",
+          "title": "Cardiovascular Therapeutic Area Fundamentals",
+          "therapeutic_area": "Cardiology",
+          "registrations": 110,
+          "completions": 101,
+          "completion_rate": 91.8,
+          "avg_score": 90.0,
+          "last_content_update": "2026-01-30",
+          "standard": "cmi5"
+        },
+        {
+          "course_id": "crs-hipaa-2026",
+          "title": "HIPAA Data Security Essentials",
+          "therapeutic_area": "Compliance",
+          "registrations": 140,
+          "completions": 129,
+          "completion_rate": 92.1,
+          "avg_score": 89.5,
+          "last_content_update": "2026-03-01",
+          "standard": "SCORM 1.2"
+        },
+        {
+          "course_id": "crs-value-based-care",
+          "title": "Value-Based Care Models",
+          "therapeutic_area": "Market Access",
+          "registrations": 95,
+          "completions": 86,
+          "completion_rate": 90.5,
+          "avg_score": 88.0,
+          "last_content_update": "2025-12-20",
+          "standard": "cmi5"
+        },
+        {
+          "course_id": "crs-market-access",
+          "title": "Market Access & Managed Care",
+          "therapeutic_area": "Market Access",
+          "registrations": 85,
+          "completions": 78,
+          "completion_rate": 91.8,
+          "avg_score": 87.5,
+          "last_content_update": "2026-02-10",
+          "standard": "SCORM 1.2"
+        },
+        {
+          "course_id": "crs-pharmacovigilance-2026",
+          "title": "Pharmacovigilance Basics",
+          "therapeutic_area": "Compliance",
+          "registrations": 75,
+          "completions": 68,
+          "completion_rate": 90.7,
+          "avg_score": 86.0,
+          "last_content_update": "2026-01-05",
+          "standard": "cmi5"
+        }
+      ]
+    },
+    {
+      "account_id": "acct-005",
+      "account_name": "Northwind Pharma",
+      "delivery_method": "launcher",
+      "contract_renewal_date": "2026-09-10",
+      "courses": [
+        {
+          "course_id": "crs-med-device-reg",
+          "title": "Medical Device Regulatory Compliance",
+          "therapeutic_area": "Compliance",
+          "registrations": 320,
+          "completions": 96,
+          "completion_rate": 30.0,
+          "avg_score": 64.0,
+          "last_content_update": "2025-07-22",
+          "standard": "SCORM 1.2"
+        },
+        {
+          "course_id": "crs-hipaa-2026",
+          "title": "HIPAA Data Security Essentials",
+          "therapeutic_area": "Compliance",
+          "registrations": 150,
+          "completions": 126,
+          "completion_rate": 84.0,
+          "avg_score": 85.0,
+          "last_content_update": "2026-02-14",
+          "standard": "SCORM 1.2"
+        },
+        {
+          "course_id": "crs-cardio-fundamentals",
+          "title": "Cardiovascular Therapeutic Area Fundamentals",
+          "therapeutic_area": "Cardiology",
+          "registrations": 130,
+          "completions": 104,
+          "completion_rate": 80.0,
+          "avg_score": 82.0,
+          "last_content_update": "2026-01-08",
+          "standard": "cmi5"
+        },
+        {
+          "course_id": "crs-pharmacovigilance-2026",
+          "title": "Pharmacovigilance Basics",
+          "therapeutic_area": "Compliance",
+          "registrations": 110,
+          "completions": 71,
+          "completion_rate": 64.5,
+          "avg_score": 74.0,
+          "last_content_update": "2025-10-30",
+          "standard": "cmi5"
+        },
+        {
+          "course_id": "crs-market-access",
+          "title": "Market Access & Managed Care",
+          "therapeutic_area": "Market Access",
+          "registrations": 95,
+          "completions": 70,
+          "completion_rate": 73.7,
+          "avg_score": 78.0,
+          "last_content_update": "2026-03-20",
+          "standard": "SCORM 1.2"
+        },
+        {
+          "course_id": "crs-onco-sales",
+          "title": "Oncology Sales Strategy",
+          "therapeutic_area": "Oncology",
+          "registrations": 85,
+          "completions": 67,
+          "completion_rate": 78.8,
+          "avg_score": 80.5,
+          "last_content_update": "2025-11-15",
+          "standard": "cmi5"
+        }
+      ]
+    }
+  ]
+}
