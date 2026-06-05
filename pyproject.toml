@@ -3,6 +3,7 @@ name = "cmr-client-health-mcp"
 version = "0.1.0"
 description = "MCP server exposing client learning-engagement health tools, modeled on Rustici Content Controller's usage/LearnerHistory reporting layer."
 readme = "README.md"
+license = "MIT"
 requires-python = ">=3.10"
 # fastmcp is the only third-party dependency. Pinned to a real recent 3.x release
 # (3.4.0, latest at build time) with an upper bound so `uv` resolves deterministically
