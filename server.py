@@ -267,5 +267,63 @@ def get_launcher_clients() -> dict:
     }
 
 
+# ===========================================================================
+# RESOURCE — app-controlled context (the other half of MCP, beyond tools)
+#
+# Tools are MODEL-controlled: the LLM decides when to call them. A resource is
+# APP-controlled read-only context the host can attach to the conversation up
+# front. Exposing the client directory as a resource means a CSM-facing app can
+# show "which accounts exist" without spending a tool round-trip — and it gives
+# the model the exact, correctly-spelled account names so it never has to guess.
+# This is the natural fit for a small, stable reference list like our roster.
+# ===========================================================================
+@mcp.resource("clients://directory")
+def client_directory() -> dict:
+    """The full roster of client accounts: id, name, delivery method, renewal date,
+    and course count. Read-only reference context for any client-health workflow."""
+    return {
+        "client_count": len(ACCOUNTS),
+        "clients": [
+            {
+                "account_id": a["account_id"],
+                "account_name": a["account_name"],
+                "delivery_method": a["delivery_method"],
+                "contract_renewal_date": a["contract_renewal_date"],
+                "course_count": len(a["courses"]),
+            }
+            for a in ACCOUNTS
+        ],
+    }
+
+
+# ===========================================================================
+# PROMPT — the CSM's renewal-review workflow, packaged as a reusable template
+#
+# The third MCP primitive (after tools + resources) is USER-controlled: prompts
+# surface in the client as named, parameterized templates (e.g. a slash command).
+# A Client Success Manager runs the SAME multi-step health review before every
+# renewal. Encoding that sequence once, here, means anyone on the team triggers
+# the whole workflow by name instead of remembering which questions to ask in
+# which order — and it composes the three tools above into one repeatable play.
+# ===========================================================================
+@mcp.prompt
+def renewal_health_briefing(account: str) -> str:
+    """Generate a complete pre-renewal health briefing for one client account."""
+    return (
+        f"You are helping a CMR Client Success Manager prepare for the upcoming renewal "
+        f"of the client '{account}'. Produce a concise health briefing:\n\n"
+        f"1. Call get_client_health('{account}') for the overall snapshot — note the "
+        f"overall completion rate, how many courses are below threshold, and how many are "
+        f"stale.\n"
+        f"2. Call get_lowest_performing_courses('{account}') to surface the specific "
+        f"renewal risks, and include each course's risk_note.\n"
+        f"3. State whether this is a Launcher client (no client-side LMS) — if so, flag "
+        f"that CMR is their only source of engagement visibility.\n"
+        f"4. Note how close the contract_renewal_date is.\n"
+        f"5. Finish with a short, friendly check-in note the CSM can send.\n\n"
+        f"Cite the actual numbers; keep it skimmable."
+    )
+
+
 if __name__ == "__main__":
     mcp.run()  # stdio transport by default

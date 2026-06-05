@@ -1,5 +1,8 @@
 # CMR Client Health — MCP Server
 
+[![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+
 > An MCP server that gives Client Success teams an instant, natural-language health read on
 > any client account — modeled on Rustici Content Controller's reporting layer.
 
@@ -34,15 +37,30 @@ Three tools, reachable in natural language from any MCP client:
 
 Build the tools once; every MCP client reuses them.
 
+### Beyond tools — the full MCP surface
+
+Most MCP servers stop at tools. This one implements all three MCP primitives, because a
+real CSM workflow needs more than model-triggered actions:
+
+| Primitive | Name | What it's for |
+|-----------|------|---------------|
+| **Resource** (app-controlled context) | `clients://directory` | A read-only roster of every account — id, name, delivery method, renewal date, course count. The host app can attach it up front so the model knows the valid, correctly-spelled account names without spending a tool round-trip. |
+| **Prompt** (user-invokable template) | `renewal_health_briefing(account)` | The CSM's standard pre-renewal review, packaged as a reusable, parameterized template (it shows up as a named command in the client). It orchestrates all three tools into one repeatable play, so anyone on the team runs the whole briefing by name instead of remembering the question sequence. |
+
+- **Tools** are *model-controlled* — the LLM decides when to call them.
+- **Resources** are *app-controlled* — read-only context the host attaches.
+- **Prompts** are *user-controlled* — named templates a person triggers.
+
 ## Architecture
 
 ```
   ┌─────────────────────┐   stdio    ┌──────────────────┐         ┌────────────────────────────┐
   │  MCP Client          │ <───────>  │  FastMCP server  │ <────>  │  mock data                 │
   │  (Claude Desktop)    │  (JSON-RPC │  (server.py)     │         │  (models Content           │
-  │                      │  subprocess)│  3 @mcp.tool     │         │   Controller               │
-  └─────────────────────┘            └──────────────────┘         │   usage/LearnerHistory)    │
-                                                                   └────────────────────────────┘
+  │                      │  subprocess)│  3 tools         │         │   Controller               │
+  │                      │            │  + 1 resource    │         │   usage/LearnerHistory)    │
+  │                      │            │  + 1 prompt      │         │                            │
+  └─────────────────────┘            └──────────────────┘         └────────────────────────────┘
 ```
 
 The mock-data lookup is the **only** thing that's fake. Swapping it for a real Content

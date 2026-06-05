@@ -18,9 +18,11 @@ corrupt the stream. Run it standalone:
 import json
 
 from server import (
+    client_directory,
     get_client_health,
     get_launcher_clients,
     get_lowest_performing_courses,
+    renewal_health_briefing,
 )
 
 WIDTH = 74
@@ -97,6 +99,40 @@ assert ids == ["acct-001", "acct-003", "acct-005"], ids
 assert launchers["launcher_client_count"] == 3
 
 # ─────────────────────────────────────────────────────────────────────────────
+# RESOURCE — clients://directory (app-controlled context, not a tool call)
+# ─────────────────────────────────────────────────────────────────────────────
+banner("RESOURCE  ·  clients://directory")
+directory = client_directory()
+highlight(
+    [f'Client roster ({directory["client_count"]} accounts) — read-only reference context:']
+    + [
+        f'- {c["account_name"]:<22} {c["delivery_method"]:<13} {c["course_count"]} courses'
+        for c in directory["clients"]
+    ]
+)
+print(json.dumps(directory, indent=2))
+assert directory["client_count"] == 5
+assert {c["account_id"] for c in directory["clients"]} == {
+    "acct-001", "acct-002", "acct-003", "acct-004", "acct-005"
+}
+
+# ─────────────────────────────────────────────────────────────────────────────
+# PROMPT — renewal_health_briefing (the CSM workflow, packaged as a template)
+# ─────────────────────────────────────────────────────────────────────────────
+banner('PROMPT  ·  renewal_health_briefing("BioPharma Inc.")')
+briefing = renewal_health_briefing("BioPharma Inc.")
+highlight(
+    [
+        "Reusable, user-invokable template that orchestrates all three tools into",
+        "the CSM's standard pre-renewal review. Rendered prompt text:",
+    ]
+)
+print("\n" + briefing)
+assert "BioPharma Inc." in briefing
+assert "get_client_health" in briefing
+assert "get_lowest_performing_courses" in briefing
+
+# ─────────────────────────────────────────────────────────────────────────────
 # ERROR PATH — unknown account returns a clean message, never a stack trace
 # ─────────────────────────────────────────────────────────────────────────────
 banner('ERROR PATH  ·  get_client_health("acct-999")')
@@ -109,5 +145,5 @@ else:
     raise AssertionError("Expected a ValueError for an unknown account id")
 
 print("\n" + "=" * WIDTH)
-print("  ALL ACCEPTANCE CHECKS PASSED ✅   (3 tools + error path)")
+print("  ALL ACCEPTANCE CHECKS PASSED ✅   (3 tools + resource + prompt + error path)")
 print("=" * WIDTH)
